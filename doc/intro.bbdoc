@@ -1,0 +1,8 @@
+<h1>Fuzzy Logic</h1>
+<p>BlitzMax translation of Mat Bucklands' C++ Fuzzy Logic implementation.</p>
+
+<h2>Examples</h2>
+<p>Please take a look at one of the examples below.</p>
+<ul>
+	<li><a href="../examples/example1.bmx">example1.bmx</a></li>
+</ul>
