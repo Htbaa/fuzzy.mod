@@ -1,0 +1,652 @@
+<html><head><title>htbaapub.fuzzy reference</title>
+<link rel=stylesheet Type=text/css href='../../../../doc/bmxstyle.css'>
+</head><body>
+<table width=100% cellspacing=0><tr align=center><td class=small>&nbsp;</td>
+<td class=small width=1%><b>htbaapub.fuzzy:</b></td>
+<td class=small width=1%><a href=#functions class=small>Functions</a></td>
+<td class=small width=1%><a href=#types class=small>Types</a></td>
+<td class=small width=1%><a href=#modinfo class=small>Modinfo</a></td>
+<td class=small width=1%><a href='../../../../mod/htbaapub.mod/fuzzy.mod/fuzzy.bmx' class=small>Source</a></td>
+<td class=small>&nbsp;</td></tr></table>
+<h1>htbaapub.fuzzy</h1>
+<h1>Fuzzy Logic</h1>
+<p>BlitzMax translation of Mat Bucklands' C++ Fuzzy Logic implementation.</p>
+<p>
+<h2>Examples</h2>
+<p>Please take a look at one of the examples below.</p>
+<ul>
+	<li><a href="../examples/example1.bmx">example1.bmx</a></li>
+</ul>
+<h2><a name=functions></a>Functions Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#FzAND>FzAND</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#FzOR>FzOR</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<h2><a name=types></a>Types Summary</h2><table class=doc width=100%>
+<tr><td class=docleft width=1%><a href=#TFuzzyModule>TFuzzyModule</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFuzzyRule>TFuzzyRule</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFuzzySet>TFuzzySet</a></td><td class=docright>
+class to define an interface for a fuzzy set.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFuzzySetLeftShoulder>TFuzzySetLeftShoulder</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFuzzySetRightShoulder>TFuzzySetRightShoulder</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFuzzySetSingleton>TFuzzySetSingleton</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFuzzySetTriangle>TFuzzySetTriangle</a></td><td class=docright>
+This is a simple class to define fuzzy sets that have a triangular shape and can be defined by a mid point, a left displacement and a right displacement.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFuzzyTerm>TFuzzyTerm</a></td><td class=docright>
+abstract class to provide an interface for classes able to be used as terms in a fuzzy if-then rule base.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFuzzyVariable>TFuzzyVariable</a></td><td class=docright>
+Class to define a fuzzy linguistic variable (FLV).
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFzAND>TFzAND</a></td><td class=docright>
+a fuzzy AND operator type.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFzFairly>TFzFairly</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFzOR>TFzOR</a></td><td class=docright>
+a fuzzy OR operator type.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFzSet>TFzSet</a></td><td class=docright>
+class to provide a proxy for a fuzzy set. The proxy inherits from FuzzyTerm and therefore can be used to create fuzzy rules.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#TFzVery>TFzVery</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<h2
+ id=functionsdet>Functions
+</h2>
+<table class=doc width=100% cellspacing=3 id=FzAND>
+<tr><td class=doctop colspan=2>Function FzAND:TFzAND(ops:TFuzzyTerm[])</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=FzOR>
+<tr><td class=doctop colspan=2>Function FzOR:TFzOR(ops:TFuzzyTerm[])</td></tr>
+</table>
+<br>
+<h2
+ id=typesdet>Types
+</h2>
+<table class=doc width=100% cellspacing=3 id=TFuzzyModule>
+<tr><td class=doctop colspan=2>Type TFuzzyModule</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFuzzyModule_consts></a>Constants Summary</th></tr><tr><td colspan=2>
+<a href=#DefuzzifyMethod_Centroid>DefuzzifyMethod_Centroid</a>
+, 
+<a href=#DefuzzifyMethod_MaxAv>DefuzzifyMethod_MaxAv</a>
+</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFuzzyModule_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#AddRule>AddRule</a></td><td class=docright>
+adds a rule to the module.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#CreateFLV>CreateFLV</a></td><td class=docright>
+creates a new 'empty' fuzzy variable and returns a reference to it.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Defuzzify>Defuzzify</a></td><td class=docright>
+given a fuzzy variable and a deffuzification method this returns a crisp value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Destroy>Destroy</a></td><td class=docright>
+Destroy.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Fuzzify>Fuzzify</a></td><td class=docright>
+this method calls the Fuzzify method of the named FLV.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#New>New</a></td><td class=docright>
+Constructor.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#SetConfidencesOfConsequentsToZero>SetConfidencesOfConsequentsToZero</a></td><td class=docright>
+zeros the DOMs of the consequents of each rule. Used by Defuzzify()
+</td></tr>
+<tr><td class=docleft width=1%><a href=#WriteAllDOMs>WriteAllDOMs</a></td><td class=docright>
+writes the DOMs of all the variables in the module to an output stream.
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=DefuzzifyMethod_Centroid>
+<tr><td class=doctop colspan=2>Const DefuzzifyMethod_Centroid:Int</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Centroid defuzzify method.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Pass this value to the defuzzify method.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=DefuzzifyMethod_MaxAv>
+<tr><td class=doctop colspan=2>Const DefuzzifyMethod_MaxAv:Int</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>MaxAV Defuzzify method.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Pass this value to the defuzzify method.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AddRule>
+<tr><td class=doctop colspan=2>Method AddRule(antecedent:TFuzzyTerm, consequence:TFuzzyTerm)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>adds a rule to the module.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=CreateFLV>
+<tr><td class=doctop colspan=2>Method CreateFLV:TFuzzyVariable(varName:String)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>creates a new 'empty' fuzzy variable and returns a reference to it.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Defuzzify>
+<tr><td class=doctop colspan=2>Method Defuzzify:Double(key:String, defuzzifyMethod:Int = TFuzzyModule.DefuzzifyMethod_MaxAv)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>given a fuzzy variable and a deffuzification method this returns a crisp value.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Destroy>
+<tr><td class=doctop colspan=2>Method Destroy()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Destroy.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Fuzzify>
+<tr><td class=doctop colspan=2>Method Fuzzify(nameOfFLV:String, val:Double)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>this method calls the Fuzzify method of the named FLV.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=New>
+<tr><td class=doctop colspan=2>Method New()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Constructor.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=SetConfidencesOfConsequentsToZero>
+<tr><td class=doctop colspan=2>Method SetConfidencesOfConsequentsToZero()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>zeros the DOMs of the consequents of each rule. Used by Defuzzify()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=WriteAllDOMs>
+<tr><td class=doctop colspan=2>Method WriteAllDOMs:String(stream:String)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>writes the DOMs of all the variables in the module to an output stream.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFuzzyRule>
+<tr><td class=doctop colspan=2>Type TFuzzyRule</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>This class implements a fuzzy rule of the form:
+IF fzVar1 AND fzVar2 AND ... fzVarn THEN fzVar.c.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFuzzyRule_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#Calculate>Calculate</a></td><td class=docright>
+this method updates the DOM (the confidence) of the consequent term with the DOM of the antecedent term.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#SetConfidenceOfConsequentToZero>SetConfidenceOfConsequentToZero</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Calculate>
+<tr><td class=doctop colspan=2>Method Calculate()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>this method updates the DOM (the confidence) of the consequent term with the DOM of the antecedent term.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TFuzzyRule(ant:TFuzzyTerm, con:TFuzzyTerm)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=SetConfidenceOfConsequentToZero>
+<tr><td class=doctop colspan=2>Method SetConfidenceOfConsequentToZero()</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFuzzySet>
+<tr><td class=doctop colspan=2>Type TFuzzySet Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>class to define an interface for a fuzzy set.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFuzzySet_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#CalculateDOM>CalculateDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ClearDOM>ClearDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#CreateBase>CreateBase</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#GetDOM>GetDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#GetRepresentativeVal>GetRepresentativeVal</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#New>New</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ORwithDOM>ORwithDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#SetDOM>SetDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=CalculateDOM>
+<tr><td class=doctop colspan=2>Method CalculateDOM:Double(val:Double) Abstract</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>return the degree of membership in this set of the given value. NOTE,
+this does not set m_dDOM to the DOM of the value passed as the parameter.
+This is because the centroid defuzzification method also uses this method
+to determine the DOMs of the values it uses as its sample points.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ClearDOM>
+<tr><td class=doctop colspan=2>Method ClearDOM()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=CreateBase>
+<tr><td class=doctop colspan=2>Method CreateBase:TFuzzySet(repVal:Double)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetDOM>
+<tr><td class=doctop colspan=2>Method GetDOM:Double()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetRepresentativeVal>
+<tr><td class=doctop colspan=2>Method GetRepresentativeVal:Double()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=New>
+<tr><td class=doctop colspan=2>Method New()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ORwithDOM>
+<tr><td class=doctop colspan=2>Method ORwithDOM(val:Double)</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>if this fuzzy set is part of a consequent FLV, and it is fired by a rule
+then this method sets the DOM (in this context, the DOM represents a
+confidence level)to the maximum of the parameter value or the set's
+existing m_dDOM value.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=SetDOM>
+<tr><td class=doctop colspan=2>Method SetDOM(val:Double)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFuzzySetLeftShoulder>
+<tr><td class=doctop colspan=2>Type TFuzzySetLeftShoulder Extends TFuzzySet</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>definition of a fuzzy set that has a left shoulder shape. The minimum value this variable can accept is *any* value less than the midpoint.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFuzzySetLeftShoulder_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#CalculateDOM>CalculateDOM</a></td><td class=docright>
+this method calculates the degree of membership for a particular value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=CalculateDOM>
+<tr><td class=doctop colspan=2>Method CalculateDOM:Double(val:Double)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>this method calculates the degree of membership for a particular value.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TFuzzySetLeftShoulder(peak:Double, leftOffset:Double, rightOffset:Double)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFuzzySetRightShoulder>
+<tr><td class=doctop colspan=2>Type TFuzzySetRightShoulder Extends TFuzzySet</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>definition of a fuzzy set that has a right shoulder shape. (the maximum value this variable can accept is *any* value greater than the midpoint.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFuzzySetRightShoulder_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#CalculateDOM>CalculateDOM</a></td><td class=docright>
+this method calculates the degree of membership for a particular value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=CalculateDOM>
+<tr><td class=doctop colspan=2>Method CalculateDOM:Double(val:Double)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>this method calculates the degree of membership for a particular value.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TFuzzySetRightShoulder(peak:Double, leftOffset:Double, rightOffset:Double)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFuzzySetSingleton>
+<tr><td class=doctop colspan=2>Type TFuzzySetSingleton Extends TFuzzySet</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>This defines a fuzzy set that is a singleton (a range over which the DOM is always 1.0)</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFuzzySetSingleton_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#CalculateDOM>CalculateDOM</a></td><td class=docright>
+this method calculates the degree of membership for a particular value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=CalculateDOM>
+<tr><td class=doctop colspan=2>Method CalculateDOM:Double(val:Double)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>this method calculates the degree of membership for a particular value.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TFuzzySetSingleton(peak:Double, leftOffset:Double, rightOffset:Double)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFuzzySetTriangle>
+<tr><td class=doctop colspan=2>Type TFuzzySetTriangle Extends TFuzzySet</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>This is a simple class to define fuzzy sets that have a triangular shape and can be defined by a mid point, a left displacement and a right displacement.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFuzzySetTriangle_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#CalculateDOM>CalculateDOM</a></td><td class=docright>
+this method calculates the degree of membership for a particular value.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=CalculateDOM>
+<tr><td class=doctop colspan=2>Method CalculateDOM:Double(val:Double)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>this method calculates the degree of membership for a particular value.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TFuzzySetTriangle(peak:Double, leftOffset:Double, rightOffset:Double)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFuzzyTerm>
+<tr><td class=doctop colspan=2>Type TFuzzyTerm Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>abstract class to provide an interface for classes able to be used as terms in a fuzzy if-then rule base.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFuzzyTerm_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#ClearDOM>ClearDOM</a></td><td class=docright>
+clears the degree of membership of the term.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Clone>Clone</a></td><td class=docright>
+all terms must implement a virtual constructor.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#GetDOM>GetDOM</a></td><td class=docright>
+retrieves the degree of membership of the term.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ORwithDOM>ORwithDOM</a></td><td class=docright>
+method for updating the DOM of a consequent when a rule fires.
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ClearDOM>
+<tr><td class=doctop colspan=2>Method ClearDOM() Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>clears the degree of membership of the term.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Clone>
+<tr><td class=doctop colspan=2>Method Clone:TFuzzyTerm() Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>all terms must implement a virtual constructor.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetDOM>
+<tr><td class=doctop colspan=2>Method GetDOM:Double() Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>retrieves the degree of membership of the term.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ORwithDOM>
+<tr><td class=doctop colspan=2>Method ORwithDOM(val:Double) Abstract</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>method for updating the DOM of a consequent when a rule fires.</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFuzzyVariable>
+<tr><td class=doctop colspan=2>Type TFuzzyVariable</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>Class to define a fuzzy linguistic variable (FLV).</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>An FLV comprises of a number of fuzzy sets.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFuzzyVariable_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#AddLeftShoulderSet>AddLeftShoulderSet</a></td><td class=docright>
+adds a left shoulder type set.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AddRightShoulderSet>AddRightShoulderSet</a></td><td class=docright>
+adds a right shoulder type set.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AddSingletonSet>AddSingletonSet</a></td><td class=docright>
+adds a singleton to the variable.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AddTriangularSet>AddTriangularSet</a></td><td class=docright>
+adds a triangular shaped fuzzy set to the variable.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#AdjustRangeToFit>AdjustRangeToFit</a></td><td class=docright>
+this method is called with the upper and lower bound of a set each time a new set is added to adjust the upper and lower range values accordingly.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#DeFuzzifyCentroid>DeFuzzifyCentroid</a></td><td class=docright>
+defuzzify the variable using the centroid method.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#DeFuzzifyMaxAv>DeFuzzifyMaxAv</a></td><td class=docright>
+defuzzifies the value by averaging the maxima of the sets that have fired.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Fuzzify>Fuzzify</a></td><td class=docright>
+takes a crisp value and calculates its degree of membership for each set in the variable.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#New>New</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#WriteDOMs>WriteDOMs</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AddLeftShoulderSet>
+<tr><td class=doctop colspan=2>Method AddLeftShoulderSet:TFzSet(name:String, minBound:Double, peak:Double, maxBound:Double)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>adds a left shoulder type set.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AddRightShoulderSet>
+<tr><td class=doctop colspan=2>Method AddRightShoulderSet:TFzSet(name:String, minBound:Double, peak:Double, maxBound:Double)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>adds a right shoulder type set.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AddSingletonSet>
+<tr><td class=doctop colspan=2>Method AddSingletonSet:TFzSet(name:String, minBound:Double, peak:Double, maxBound:Double)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>adds a singleton to the variable.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AddTriangularSet>
+<tr><td class=doctop colspan=2>Method AddTriangularSet:TFzSet(name:String, minBound:Double, peak:Double, maxBound:Double)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>adds a triangular shaped fuzzy set to the variable.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=AdjustRangeToFit>
+<tr><td class=doctop colspan=2>Method AdjustRangeToFit(minBound:Double, maxBound:Double)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>this method is called with the upper and lower bound of a set each time a new set is added to adjust the upper and lower range values accordingly.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=DeFuzzifyCentroid>
+<tr><td class=doctop colspan=2>Method DeFuzzifyCentroid:Double(numSamples:Int)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>defuzzify the variable using the centroid method.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=DeFuzzifyMaxAv>
+<tr><td class=doctop colspan=2>Method DeFuzzifyMaxAv:Double()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>defuzzifies the value by averaging the maxima of the sets that have fired.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>OUTPUT = sum (maxima * DOM) / sum (DOMs)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Fuzzify>
+<tr><td class=doctop colspan=2>Method Fuzzify(val:Double)</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>takes a crisp value and calculates its degree of membership for each set in the variable.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=New>
+<tr><td class=doctop colspan=2>Method New()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=WriteDOMs>
+<tr><td class=doctop colspan=2>Method WriteDOMs:String(stream:String)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFzAND>
+<tr><td class=doctop colspan=2>Type TFzAND Extends TFuzzyTerm</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>a fuzzy AND operator type.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Type to provider the fuzzy AND operator to be used in the creation of a fuzzy rule base.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFzAND_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#ClearDOM>ClearDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Clone>Clone</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#GetDOM>GetDOM</a></td><td class=docright>
+the AND operator returns the minimum DOM of the sets it is operating on.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#New>New</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ORwithDOM>ORwithDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ClearDOM>
+<tr><td class=doctop colspan=2>Method ClearDOM()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Clone>
+<tr><td class=doctop colspan=2>Method Clone:TFuzzyTerm()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TFzAND(ops:TFuzzyTerm[])</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetDOM>
+<tr><td class=doctop colspan=2>Method GetDOM:Double()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>the AND operator returns the minimum DOM of the sets it is operating on.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=New>
+<tr><td class=doctop colspan=2>Method New()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ORwithDOM>
+<tr><td class=doctop colspan=2>Method ORwithDOM(val:Double)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFzFairly>
+<tr><td class=doctop colspan=2>Type TFzFairly Extends TFuzzyTerm</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFzFairly_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#ClearDOM>ClearDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Clone>Clone</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#GetDOM>GetDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ORwithDOM>ORwithDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ClearDOM>
+<tr><td class=doctop colspan=2>Method ClearDOM()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Clone>
+<tr><td class=doctop colspan=2>Method Clone:TFuzzyTerm()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TFzFairly(ft:TFzFairly)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetDOM>
+<tr><td class=doctop colspan=2>Method GetDOM:Double()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ORwithDOM>
+<tr><td class=doctop colspan=2>Method ORwithDOM(val:Double)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFzOR>
+<tr><td class=doctop colspan=2>Type TFzOR Extends TFuzzyTerm</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>a fuzzy OR operator type.</td></tr>
+<tr><td class=docleft width=1%>Information</td><td class=docright>Type to provider the fuzzy OR operator to be used in the creation of a fuzzy rule base.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFzOR_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#ClearDOM>ClearDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Clone>Clone</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#GetDOM>GetDOM</a></td><td class=docright>
+the OR operator returns the maximum DOM of the sets it is operating on.
+</td></tr>
+<tr><td class=docleft width=1%><a href=#New>New</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ORwithDOM>ORwithDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ClearDOM>
+<tr><td class=doctop colspan=2>Method ClearDOM()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Clone>
+<tr><td class=doctop colspan=2>Method Clone:TFuzzyTerm()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TFzOR(ops:TFuzzyTerm[])</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetDOM>
+<tr><td class=doctop colspan=2>Method GetDOM:Double()</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>the OR operator returns the maximum DOM of the sets it is operating on.</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=New>
+<tr><td class=doctop colspan=2>Method New()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ORwithDOM>
+<tr><td class=doctop colspan=2>Method ORwithDOM(val:Double)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFzSet>
+<tr><td class=doctop colspan=2>Type TFzSet Extends TFuzzyTerm</td></tr>
+<tr><td class=docleft width=1%>Description</td><td class=docright>class to provide a proxy for a fuzzy set. The proxy inherits from FuzzyTerm and therefore can be used to create fuzzy rules.</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFzSet_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#ClearDOM>ClearDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Clone>Clone</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#GetDOM>GetDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ORwithDOM>ORwithDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ClearDOM>
+<tr><td class=doctop colspan=2>Method ClearDOM()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Clone>
+<tr><td class=doctop colspan=2>Method Clone:TFuzzyTerm()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TFzSet(fs:TFuzzySet)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetDOM>
+<tr><td class=doctop colspan=2>Method GetDOM:Double()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ORwithDOM>
+<tr><td class=doctop colspan=2>Method ORwithDOM(val:Double)</td></tr>
+</table>
+<br>
+<table class=doc width=100% cellspacing=3 id=TFzVery>
+<tr><td class=doctop colspan=2>Type TFzVery Extends TFuzzyTerm</td></tr>
+</table>
+<table class=doc width=90% align=center><tr ><th class=doctop colspan=2 align=left><a name=TFzVery_methods></a>Methods Summary</th></tr>
+<tr><td class=docleft width=1%><a href=#ClearDOM>ClearDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Clone>Clone</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#Create>Create</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#GetDOM>GetDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+<tr><td class=docleft width=1%><a href=#ORwithDOM>ORwithDOM</a></td><td class=docright>
+&nbsp;
+</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ClearDOM>
+<tr><td class=doctop colspan=2>Method ClearDOM()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Clone>
+<tr><td class=doctop colspan=2>Method Clone:TFuzzyTerm()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=Create>
+<tr><td class=doctop colspan=2>Method Create:TFzVery(ft:TFzVery)</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=GetDOM>
+<tr><td class=doctop colspan=2>Method GetDOM:Double()</td></tr>
+</table>
+<table class=doc width=100% cellspacing=3 id=ORwithDOM>
+<tr><td class=doctop colspan=2>Method ORwithDOM(val:Double)</td></tr>
+</table>
+<br>
+<h2 id=modinfo>Module Information</h2>
+<table width=100%>
+<tr><th width=1%>Name</th><td>htbaapub.fuzzy</td></tr>
+<tr><th width=1%>Version</th><td>0.1</td></tr>
+<tr><th width=1%>Author</th><td>Christiaan Kras</td></tr>
+<tr><th width=1%>Author of C++ code</th><td>Mat Buckland <a href='http://www.ai-junkie.com'>http://www.ai-junkie.com</a></td></tr>
+<tr><th width=1%>Git repository</th><td><a href='http://github.com/Htbaa/htbaapub.mod/'>http://github.com/Htbaa/htbaapub.mod/</a></td></tr>
+</body></html>
