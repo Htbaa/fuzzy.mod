@@ -24,6 +24,7 @@ Type TFzVery Extends TFuzzyTerm
 		bbdoc:
 	End Rem
 	Method Clone:TFuzzyTerm()
+		Return Self
 		Return New TFzVery.Create(Self)
 	End Method
 	
@@ -68,6 +69,7 @@ Type TFzFairly Extends TFuzzyTerm
 		bbdoc:
 	End Rem
 	Method Clone:TFuzzyTerm()
+		Return Self
 		Return New TFzFairly.Create(Self)
 	End Method
 	
