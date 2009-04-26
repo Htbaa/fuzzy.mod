@@ -56,15 +56,27 @@ Type TFuzzyVariable
 	End Method
 
 	Rem
-		bbdoc:
+		bbdoc: adds a triangular shaped fuzzy set to the variable
 	End Rem
 	Method AddTriangularSet:TFzSet(name:String, minBound:Double, peak:Double, maxBound:Double)
+		Local set:TFuzzySetTriangle = New TFuzzySetTriangle.Create(peak, peak - minBound, maxBound - peak)
+		Self.m_MemberSets.Insert(name, set)
+		
+		Self.AdjustRangeToFit(minBound, maxBound)
+
+		Return New TFzSet.Create(set)
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: adds a singleton to the variable
 	End Rem
 	Method AddSingletonSet:TFzSet(name:String, minBound:Double, peak:Double, maxBound:Double)
+		Local set:TFuzzySetSingleton = New TFuzzySetSingleton.Create(peak, peak - minBound, maxBound - peak)
+		Self.m_MemberSets.Insert(name, set)
+		
+		Self.AdjustRangeToFit(minBound, maxBound)
+
+		Return New TFzSet.Create(set)
 	End Method
 	
 	Rem
@@ -148,47 +160,3 @@ Type TFuzzyVariable
 		Return stream
 	End Method
 End Type
-
-rem
-
-
-//------------------------- AddTriangularSet ----------------------------------
-//
-//  adds a triangular shaped fuzzy set to the variable
-//-----------------------------------------------------------------------------
-FzSet FuzzyVariable::AddTriangularSet(std::string name,
-                                     double       minBound,
-                                     double       peak,
-                                     double       maxBound)
-{
-  m_MemberSets[name] = new FuzzySet_Triangle(peak,
-                                             peak-minBound,
-                                             maxBound-peak);
-  //adjust range if necessary
-  AdjustRangeToFit(minBound, maxBound);
-
-  return FzSet(*m_MemberSets[name]);
-}
-
-
-
-
-//--------------------------- AddSingletonSet ---------------------------------
-//
-//  adds a singleton to the variable
-//-----------------------------------------------------------------------------
-FzSet FuzzyVariable::AddSingletonSet(std::string name,
-                                    double       minBound,
-                                    double       peak,
-                                    double       maxBound)
-{
-  m_MemberSets[name] = new FuzzySet_Singleton(peak,
-                                              peak-minBound,
-                                              maxBound-peak);
-
-  AdjustRangeToFit(minBound, maxBound);
-
-  return FzSet(*m_MemberSets[name]);
-}
-
-endrem
