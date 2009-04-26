@@ -27,6 +27,7 @@ Type TFzAND Extends TFuzzyTerm
 		bbdoc:
 	End Rem
 	Method Clone:TFuzzyTerm()
+		Return Self
 		Local term:TFzAND = New TFzAND
 		term.m_Terms = Self.m_Terms.Copy()
 		Return term
@@ -101,6 +102,7 @@ Type TFzOR Extends TFuzzyTerm
 		bbdoc:
 	End Rem
 	Method Clone:TFuzzyTerm()
+		Return Self
 		Local term:TFzOR = New TFzOR
 		term.m_Terms = Self.m_Terms.Copy()
 		Return term
@@ -110,7 +112,7 @@ Type TFzOR Extends TFuzzyTerm
 		bbdoc: the OR operator returns the maximum DOM of the sets it is operating on
 	End Rem
 	Method GetDOM:Double()
-		Local largest:Double = 10 ^ -38
+		Local largest:Double = -(10 ^ -38)
 		For Local curTerm:TFuzzyTerm = EachIn Self.m_Terms
 			If curTerm.GetDOM() > largest
 				largest = curTerm.GetDOM()
