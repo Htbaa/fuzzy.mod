@@ -33,7 +33,7 @@ Type TFuzzySetTriangle Extends TFuzzySet
 		'find DOM if right of center
 		Else If val > Self.m_dPeakPoint And val <= Self.m_dPeakPoint + Self.m_dRightOffset
 			Local grad:Double = 1.0 / -Self.m_dRightOffset
-			Return grad * (val - Self.m_dPeakPoint) + Self.m_dLeftOffset
+			Return grad * (val - Self.m_dPeakPoint) + 1.0
 		'out of range of this FLV, return zero
 		Else
 			Return 0.0
