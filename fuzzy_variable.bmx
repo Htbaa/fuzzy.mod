@@ -84,7 +84,7 @@ Type TFuzzyVariable
 	End Rem
 	Method Fuzzify(val:Double)
 		Assert (val >= Self.m_dMinRange And val <= Self.m_dMaxRange), "TFuzzyVariable.Fuzzify: value out of range"
-		For Local curSet:TFuzzySet = EachIn Self.m_MemberSets
+		For Local curSet:TFuzzySet = EachIn Self.m_MemberSets.Values()
 			curSet.SetDOM(curset.CalculateDOM(val))
 		Next
 	End Method
@@ -96,10 +96,10 @@ Type TFuzzyVariable
 	Method DeFuzzifyMaxAv:Double()
 		Local bottom:Double = 0.0
 		Local top:Double = 0.0
-		
-		For Local curSet:TFuzzySet = EachIn Self.m_MemberSets
-			bottom:+curset.GetDOM()
-			top:+curset.GetRepresentativeVal() * curset.GetDOM()
+
+		For Local curSet:TFuzzySet = EachIn Self.m_MemberSets.Values()
+			bottom:+curSet.GetDOM()
+			top:+curSet.GetRepresentativeVal() * curSet.GetDOM()
 		Next
 		
 		If bottom = 0
@@ -133,7 +133,7 @@ Type TFuzzyVariable
 		    'for each set get the contribution to the area. This is the lower of the 
 		    'value returned from CalculateDOM or the actual DOM of the fuzzified 
 		    'value itself
-			For Local curSet:TFuzzySet = EachIn Self.m_MemberSets
+			For Local curSet:TFuzzySet = EachIn Self.m_MemberSets.Values()
 				Local contribution:Double = Min(curSet.CalculateDOM(Self.m_dMinRange + samp * stepSize), curSet.GetDOM())
 				totalArea:+contribution
 				sumOfMoments:+(Self.m_dMinRange + samp * stepSize) * contribution
