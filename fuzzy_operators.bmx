@@ -20,14 +20,16 @@ Type TFzAND Extends TFuzzyTerm
 		For Local op:TFuzzyTerm = EachIn ops
 			Self.m_Terms.AddLast(op.Clone())
 		Next
+		Return Self
 	End Method
 	
 	Rem
 		bbdoc:
 	End Rem
 	Method Clone:TFuzzyTerm()
-		DebugLog "return new FzAND(*this);"
-		Return Null
+		Local term:TFzAND = New TFzAND
+		term.m_Terms = Self.m_Terms.Copy()
+		Return term
 	End Method
 	
 	Rem
@@ -92,14 +94,16 @@ Type TFzOR Extends TFuzzyTerm
 		For Local op:TFuzzyTerm = EachIn ops
 			Self.m_Terms.AddLast(op.Clone())
 		Next
+		Return Self
 	End Method
 	
 	Rem
 		bbdoc:
 	End Rem
 	Method Clone:TFuzzyTerm()
-		DebugLog "return new FzOR(*this);"
-		Return Null
+		Local term:TFzOR = New TFzOR
+		term.m_Terms = Self.m_Terms.Copy()
+		Return term
 	End Method
 	
 	Rem

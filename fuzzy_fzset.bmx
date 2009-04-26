@@ -18,8 +18,7 @@ Type TFzSet Extends TFuzzyTerm
 		bbdoc:
 	End Rem
 	Method Clone:TFuzzyTerm()
-		'return new FzSet(*this);
-		Return Null
+		Return New TFzSet.Create(Self.m_Set)
 	End Method
 	
 	Rem

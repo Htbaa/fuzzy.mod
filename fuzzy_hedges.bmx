@@ -24,8 +24,7 @@ Type TFzVery Extends TFuzzyTerm
 		bbdoc:
 	End Rem
 	Method Clone:TFuzzyTerm()
-		DebugLog "FuzzyTerm* Clone()const{return new FzVery(*this);}"
-		Return Null
+		Return New TFzVery.Create(Self)
 	End Method
 	
 	Rem
@@ -53,7 +52,7 @@ Type TFzFairly Extends TFuzzyTerm
 	Rem
 		bbdoc:
 	End Rem
-	Method Create:TFzFairly(ft:TFzVery)
+	Method Create:TFzFairly(ft:TFzFairly)
 		Self.m_set = ft.m_Set
 		Return Self
 	End Method
@@ -69,8 +68,7 @@ Type TFzFairly Extends TFuzzyTerm
 		bbdoc:
 	End Rem
 	Method Clone:TFuzzyTerm()
-		DebugLog "FuzzyTerm* Clone()const{return new FzFairly(*this);}"
-		Return Null
+		Return New TFzFairly.Create(Self)
 	End Method
 	
 	Rem
