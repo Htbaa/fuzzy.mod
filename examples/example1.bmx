@@ -7,7 +7,7 @@ Local fm:TFuzzyModule = New TFuzzyModule
 Local distToTarget:TFuzzyVariable = fm.CreateFLV("DistToTarget")
 Local TargetClose:TFzSet = distToTarget.AddLeftShoulderSet("TargetClose", 0, 25, 150)
 Local TargetMedium:TFzSet = distToTarget.AddTriangularSet("TargetMedium", 25, 50, 300)
-Local TargetFar:TFzSet = distToTarget.AddRightShoulderSet("TargetFar", 150, 300, 500)
+Local TargetFar:TFzSet = distToTarget.AddRightShoulderSet("TargetFar", 150, 300, 1000)
 
 Local desirability:TFuzzyVariable = fm.CreateFLV("Desirability")
 Local VeryDesirable:TFzSet = desirability.AddRightShoulderSet("VeryDesirable", 50, 75, 100)
@@ -32,9 +32,11 @@ fm.AddRule(FzAND([TargetFar, AmmoLoads]), Desirable)
 fm.AddRule(FzAND([TargetFar, AmmoOkay]), Undesirable)
 fm.AddRule(FzAND([TargetFar, AmmowLow]), Undesirable)
 
-fm.Fuzzify("DistToTarget", 200)
-fm.Fuzzify("AmmoStatus", 20)
+fm.Fuzzify("DistToTarget", 40)
+fm.Fuzzify("AmmoStatus", 10)
 
 'fuzzify distance and amount of ammo
-DebugLog fm.Defuzzify("Desirability", TFuzzyModule.DefuzzifyMethod_MaxAv)
-DebugLog fm.Defuzzify("Desirability", TFuzzyModule.DefuzzifyMethod_Centroid)
+Local result1:Double = fm.Defuzzify("Desirability", TFuzzyModule.DefuzzifyMethod_MaxAv)
+Local result2:Double = fm.Defuzzify("Desirability", TFuzzyModule.DefuzzifyMethod_Centroid)
+DebugLog result1
+DebugLog result2
