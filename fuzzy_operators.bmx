@@ -7,25 +7,20 @@ Type TFzAND Extends TFuzzyTerm
 	Field m_Terms:TList
 	
 	Rem
-		bbdoc: 
-	End Rem
-	Method Create2:TFzAND(op1:TFuzzyTerm, op2:TFuzzyTerm)
-	End Method
-	
-	Rem
-		bbdoc: 
-	End Rem
-	Method Create3:TFzAND(op1:TFuzzyTerm, op2:TFuzzyTerm, op3:TFuzzyTerm)
-	End Method
-	
-	Rem
-		bbdoc: 
-	End Rem
-	Method Create4:TFzAND(op1:TFuzzyTerm, op2:TFuzzyTerm, op3:TFuzzyTerm, op4:TFuzzyTerm)
-	End Method
-	Rem
 		bbdoc:
 	End Rem
+	Method New()
+		Self.m_Terms = New TList
+	End Method
+	
+	Rem
+		bbdoc: 
+	End Rem
+	Method Create:TFzAND(ops:TFuzzyTerm[])
+		For Local op:TFuzzyTerm = EachIn ops
+			Self.m_Terms.AddLast(op.Clone())
+		Next
+	End Method
 	
 	Rem
 		bbdoc:
@@ -36,38 +31,43 @@ Type TFzAND Extends TFuzzyTerm
 	End Method
 	
 	Rem
-		bbdoc: 
+		bbdoc: the AND operator returns the minimum DOM of the sets it is operating on
 	End Rem
 	Method GetDOM:Double()
+		Local smallest:Double = 10 ^ 308
+		For Local curTerm:TFuzzyTerm = EachIn Self.m_Terms
+			If curTerm.GetDOM() < smallest
+				smallest = curTerm.GetDOM()
+			End If
+		Next
+		Return smallest
 	End Method
 	
 	Rem
 		bbdoc:
 	End Rem
 	Method ClearDOM()
+		For Local curTerm:TFuzzyTerm = EachIn Self.m_Terms
+			curTerm.ClearDOM()
+		Next
 	End Method
 	
 	Rem
 		bbdoc: 
 	End Rem
 	Method ORwithDOM(val:Double)
+		For Local curTerm:TFuzzyTerm = EachIn Self.m_Terms
+			curTerm.ORwithDOM(val)
+		Next
 	End Method
 End Type
+
 
 Rem
 	bbdoc:
 End Rem
 Function FzAND:TFzAND(ops:TFuzzyTerm[])
-	Select ops.Length
-		Case 2
-			Return New TFzAND.Create2(ops[0], ops[1])
-		Case 3
-			Return New TFzAND.Create3(ops[0], ops[1], ops[2])
-		Case 4
-			Return New TFzAND.Create4(ops[0], ops[1], ops[2], ops[3])
-		Default
-			Throw "FzAND can not handle " + ops.Length + " parameters"
-	End Select
+	Return New TFzAND.Create(ops)
 End Function
 
 Rem
@@ -79,25 +79,20 @@ Type TFzOR Extends TFuzzyTerm
 	Field m_Terms:TList
 	
 	Rem
-		bbdoc: 
-	End Rem
-	Method Create2:TFzOR(op1:TFuzzyTerm, op2:TFuzzyTerm)
-	End Method
-	
-	Rem
-		bbdoc: 
-	End Rem
-	Method Create3:TFzOR(op1:TFuzzyTerm, op2:TFuzzyTerm, op3:TFuzzyTerm)
-	End Method
-	
-	Rem
-		bbdoc: 
-	End Rem
-	Method Create4:TFzOR(op1:TFuzzyTerm, op2:TFuzzyTerm, op3:TFuzzyTerm, op4:TFuzzyTerm)
-	End Method
-	Rem
 		bbdoc:
 	End Rem
+	Method New()
+		Self.m_Terms = New TList
+	End Method
+	
+	Rem
+		bbdoc: 
+	End Rem
+	Method Create:TFzOR(ops:TFuzzyTerm[])
+		For Local op:TFuzzyTerm = EachIn ops
+			Self.m_Terms.AddLast(op.Clone())
+		Next
+	End Method
 	
 	Rem
 		bbdoc:
@@ -108,9 +103,16 @@ Type TFzOR Extends TFuzzyTerm
 	End Method
 	
 	Rem
-		bbdoc: 
+		bbdoc: the OR operator returns the maximum DOM of the sets it is operating on
 	End Rem
 	Method GetDOM:Double()
+		Local largest:Double = 10 ^ -38
+		For Local curTerm:TFuzzyTerm = EachIn Self.m_Terms
+			If curTerm.GetDOM() > largest
+				largest = curTerm.GetDOM()
+			End If
+		Next
+		Return largest
 	End Method
 	
 	Rem
@@ -132,14 +134,5 @@ Rem
 	bbdoc:
 End Rem
 Function FzOR:TFzOR(ops:TFuzzyTerm[])
-	Select ops.Length
-		Case 2
-			Return New TFzOR.Create2(ops[0], ops[1])
-		Case 3
-			Return New TFzOR.Create3(ops[0], ops[1], ops[2])
-		Case 4
-			Return New TFzOR.Create4(ops[0], ops[1], ops[2], ops[3])
-		Default
-			Throw "FzOR can not handle " + ops.Length + " parameters"
-	End Select
+	Return New TFzOR.Create(ops)
 End Function
