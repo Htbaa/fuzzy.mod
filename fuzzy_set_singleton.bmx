@@ -12,7 +12,7 @@ Type TFuzzySetSingleton Extends TFuzzySet
 	Rem
 		bbdoc:
 	End Rem
-	Method Create:TFuzzySetLeftShoulder(peak:Double, leftOffset:Double, rightOffset:Double)
+	Method Create:TFuzzySetSingleton(peak:Double, leftOffset:Double, rightOffset:Double)
 		Self.m_dPeakPoint = peak
 		Self.m_dLeftOffset = leftOffset
 		Self.m_dRightOffset = rightOffset
