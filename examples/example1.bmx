@@ -32,11 +32,21 @@ fm.AddRule(FzAND([TargetFar, AmmoLoads]), Desirable)
 fm.AddRule(FzAND([TargetFar, AmmoOkay]), Undesirable)
 fm.AddRule(FzAND([TargetFar, AmmowLow]), Undesirable)
 
-fm.Fuzzify("DistToTarget", 40)
-fm.Fuzzify("AmmoStatus", 10)
+'fuzzify distance and amount of ammo
+fm.Fuzzify("DistToTarget", 200)
+fm.Fuzzify("AmmoStatus", 20)
+'Try MaxAV method
+Local result1:Double = fm.Defuzzify("Desirability", TFuzzyModule.DefuzzifyMethod_MaxAv)
+DebugLog result1
+Local s:String
+DebugLog fm.WriteAllDOMs(s)
 
 'fuzzify distance and amount of ammo
-Local result1:Double = fm.Defuzzify("Desirability", TFuzzyModule.DefuzzifyMethod_MaxAv)
+fm.Fuzzify("DistToTarget", 200)
+fm.Fuzzify("AmmoStatus", 20)
+'Try Centroid method
 Local result2:Double = fm.Defuzzify("Desirability", TFuzzyModule.DefuzzifyMethod_Centroid)
-DebugLog result1
 DebugLog result2
+s = ""
+DebugLog fm.WriteAllDOMs(s)
+
