@@ -24,7 +24,7 @@ Type TFuzzySetSingleton Extends TFuzzySet
 		bbdoc: this method calculates the degree of membership for a particular value
 	End Rem
 	Method CalculateDOM:Double(val:Double)
-		If val >= Self.m_dPeakPoint - Self.m_dLeftOffset And val <= Self.m_dPeakPoint + Self.m_dRightOffset
+		If (val >= Self.m_dPeakPoint - Self.m_dLeftOffset) And (val <= Self.m_dPeakPoint + Self.m_dRightOffset)
 			Return 1.0
 		'out of range of this FLV, return zero
 		Else

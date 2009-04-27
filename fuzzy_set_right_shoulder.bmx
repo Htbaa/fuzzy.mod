@@ -28,11 +28,11 @@ Type TFuzzySetRightShoulder Extends TFuzzySet
 		If (Self.m_dRightOffset = 0 And Self.m_dPeakPoint = val) Or (Self.m_dLeftOffset = 0 And Self.m_dPeakPoint = val)
 			Return 1.0
 		'find DOM if left of center
-		Else If val <= Self.m_dPeakPoint And val > Self.m_dPeakPoint - Self.m_dLeftOffset
+		Else If (val <= Self.m_dPeakPoint) And (val > (Self.m_dPeakPoint - Self.m_dLeftOffset))
 			Local grad:Double = 1.0 / Self.m_dLeftOffset
 			Return grad * (val - (Self.m_dPeakPoint - Self.m_dLeftOffset))
 		'find DOM if right of center
-		Else If val > Self.m_dPeakPoint And val <= Self.m_dPeakPoint + Self.m_dRightOffset
+		Else If (val > Self.m_dPeakPoint) And (val <= Self.m_dPeakPoint + Self.m_dRightOffset)
 			Return 1.0
 		'out of range of this FLV, return zero
 		Else
