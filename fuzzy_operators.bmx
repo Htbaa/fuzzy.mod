@@ -27,7 +27,6 @@ Type TFzAND Extends TFuzzyTerm
 		bbdoc:
 	End Rem
 	Method Clone:TFuzzyTerm()
-		Return Self
 		Local term:TFzAND = New TFzAND
 		term.m_Terms = Self.m_Terms.Copy()
 		Return term
@@ -102,7 +101,6 @@ Type TFzOR Extends TFuzzyTerm
 		bbdoc:
 	End Rem
 	Method Clone:TFuzzyTerm()
-		Return Self
 		Local term:TFzOR = New TFzOR
 		term.m_Terms = Self.m_Terms.Copy()
 		Return term
