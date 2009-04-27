@@ -1,6 +1,7 @@
 Rem
-	bbdoc: This is a simple class to define fuzzy sets that have a triangular shape and can be defined by a mid point, a left displacement and a right displacement.
+	bbdoc: Triangle shape
 	about:
+	This is a simple class to define fuzzy sets that have a triangular shape and can be defined by a mid point, a left displacement and a right displacement.
 End Rem
 Type TFuzzySetTriangle Extends TFuzzySet
 	'the values that define the shape of this FLV
@@ -9,7 +10,7 @@ Type TFuzzySetTriangle Extends TFuzzySet
 	Field m_dLeftOffset:Double
 
 	Rem
-		bbdoc:
+		bbdoc: Creates a TFuzzySetTriangle object
 	End Rem
 	Method Create:TFuzzySetTriangle(peak:Double, leftOffset:Double, rightOffset:Double)
 		Self.m_dPeakPoint = peak

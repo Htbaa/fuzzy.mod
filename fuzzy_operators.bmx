@@ -14,7 +14,7 @@ Type TFzAND Extends TFuzzyTerm
 	End Method
 	
 	Rem
-		bbdoc: 
+		bbdoc: Creates AND operator
 	End Rem
 	Method Create:TFzAND(ops:TFuzzyTerm[])
 		For Local op:TFuzzyTerm = EachIn ops
@@ -24,7 +24,7 @@ Type TFzAND Extends TFuzzyTerm
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Clones AND operator
 	End Rem
 	Method Clone:TFuzzyTerm()
 		Local term:TFzAND = New TFzAND
@@ -46,7 +46,7 @@ Type TFzAND Extends TFuzzyTerm
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Clears DOM
 	End Rem
 	Method ClearDOM()
 		For Local curTerm:TFuzzyTerm = EachIn Self.m_Terms
@@ -66,7 +66,8 @@ End Type
 
 
 Rem
-	bbdoc:
+	bbdoc: Create AND operator with any number of terms
+	about: This is a shortcut to New TFzAND.Create(ops)
 End Rem
 Function FzAND:TFzAND(ops:TFuzzyTerm[])
 	Return New TFzAND.Create(ops)
@@ -88,7 +89,7 @@ Type TFzOR Extends TFuzzyTerm
 	End Method
 	
 	Rem
-		bbdoc: 
+		bbdoc: Creates OR operator
 	End Rem
 	Method Create:TFzOR(ops:TFuzzyTerm[])
 		For Local op:TFuzzyTerm = EachIn ops
@@ -98,7 +99,7 @@ Type TFzOR Extends TFuzzyTerm
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Clones OR operator
 	End Rem
 	Method Clone:TFuzzyTerm()
 		Local term:TFzOR = New TFzOR
@@ -120,7 +121,7 @@ Type TFzOR Extends TFuzzyTerm
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Clears DOM
 	End Rem
 	Method ClearDOM()
 		Assert 0, "TFzOr.ClearDOM: invalid context"
@@ -135,7 +136,8 @@ Type TFzOR Extends TFuzzyTerm
 End Type
 
 Rem
-	bbdoc:
+	bbdoc: Create OR operator with any number of terms
+	about: This is a shortcut to New TFzOR.Create(ops)
 End Rem
 Function FzOR:TFzOR(ops:TFuzzyTerm[])
 	Return New TFzOR.Create(ops)

@@ -2,11 +2,10 @@ SuperStrict
 
 Rem
 	bbdoc: htbaapub.fuzzy
-	about:
 EndRem
 Module htbaapub.fuzzy
 ModuleInfo "Name: htbaapub.fuzzy"
-ModuleInfo "Version: 0.1"
+ModuleInfo "Version: 1.0"
 ModuleInfo "Author: Christiaan Kras"
 ModuleInfo "Author of C++ code: Mat Buckland <a href='http://www.ai-junkie.com'>http://www.ai-junkie.com</a>"
 ModuleInfo "Git repository: <a href='http://github.com/Htbaa/htbaapub.mod/'>http://github.com/Htbaa/htbaapub.mod/</a>"

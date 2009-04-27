@@ -1,5 +1,5 @@
 Rem
-	bbdoc:
+	bbdoc: Right shoulder shape
 	about:
 	definition of a fuzzy set that has a right shoulder shape. (the maximum value this variable can accept is *any* value greater than the midpoint.
 End Rem
@@ -10,7 +10,7 @@ Type TFuzzySetRightShoulder Extends TFuzzySet
 	Field m_dLeftOffset:Double
 	
 	Rem
-		bbdoc:
+		bbdoc: Creates a TFuzzySetRightShoulder object
 	End Rem
 	Method Create:TFuzzySetRightShoulder(peak:Double, leftOffset:Double, rightOffset:Double)
 		Self.m_dPeakPoint = peak

@@ -1,12 +1,11 @@
 Rem
-	bbdoc:
-	about:
+	bbdoc: Implements a Very hedge
 End Rem
 Type TFzVery Extends TFuzzyTerm
 	Field m_Set:TFuzzySet
 	
 	Rem
-		bbdoc:
+		bbdoc: Create a Very term
 	End Rem
 	Method Create:TFzVery(ft:TFzVery)
 		Self.m_set = ft.m_Set
@@ -14,21 +13,21 @@ Type TFzVery Extends TFuzzyTerm
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Returns DOM
 	End Rem
 	Method GetDOM:Double()
 		Return Self.m_Set.GetDOM() * Self.m_Set.GetDOM()
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Clones TFzVery
 	End Rem
 	Method Clone:TFuzzyTerm()
 		Return New TFzVery.Create(Self)
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Clears DOM
 	End Rem
 	Method ClearDOM()
 		Self.m_Set.ClearDOM()
@@ -43,14 +42,13 @@ Type TFzVery Extends TFuzzyTerm
 End Type
 
 Rem
-	bbdoc:
-	about:
+	bbdoc: Implements a Fairly hedge
 End Rem
 Type TFzFairly Extends TFuzzyTerm
 	Field m_Set:TFuzzySet
 	
 	Rem
-		bbdoc:
+		bbdoc: Create a Fairly term
 	End Rem
 	Method Create:TFzFairly(ft:TFzFairly)
 		Self.m_set = ft.m_Set
@@ -58,21 +56,21 @@ Type TFzFairly Extends TFuzzyTerm
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Returns DOM
 	End Rem
 	Method GetDOM:Double()
 		Return Sqr(Self.m_Set.GetDOM())
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Clones DOM
 	End Rem
 	Method Clone:TFuzzyTerm()
 		Return New TFzFairly.Create(Self)
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Clears DOM
 	End Rem
 	Method ClearDOM()
 		Self.m_Set.ClearDOM()

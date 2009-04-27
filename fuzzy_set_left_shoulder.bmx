@@ -1,5 +1,5 @@
 Rem
-	bbdoc:
+	bbdoc: Left shoulder shape
 	about:
 	definition of a fuzzy set that has a left shoulder shape. The minimum value this variable can accept is *any* value less than the midpoint.
 End Rem
@@ -10,7 +10,7 @@ Type TFuzzySetLeftShoulder Extends TFuzzySet
 	Field m_dLeftOffset:Double
 	
 	Rem
-		bbdoc:
+		bbdoc: Creates a TFuzzySetLeftShoulder object
 	End Rem
 	Method Create:TFuzzySetLeftShoulder(peak:Double, leftOffset:Double, rightOffset:Double)
 		Self.m_dPeakPoint = peak

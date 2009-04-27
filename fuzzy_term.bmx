@@ -1,6 +1,7 @@
 Rem
-	bbdoc: abstract class to provide an interface for classes able to be used as terms in a fuzzy if-then rule base.
+	bbdoc: Fuzzy Term
 	about:
+	abstract class to provide an interface for classes able to be used as terms in a fuzzy if-then rule base.
 End Rem
 Type TFuzzyTerm Abstract
 	Rem

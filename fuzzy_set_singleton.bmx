@@ -1,5 +1,5 @@
 Rem
-	bbdoc: 
+	bbdoc: Singleton set
 	about:
 	This defines a fuzzy set that is a singleton (a range over which the DOM is always 1.0)
 End Rem
@@ -10,7 +10,7 @@ Type TFuzzySetSingleton Extends TFuzzySet
 	Field m_dLeftOffset:Double
 	
 	Rem
-		bbdoc:
+		bbdoc: Creates a TFuzzySetSingleton object
 	End Rem
 	Method Create:TFuzzySetSingleton(peak:Double, leftOffset:Double, rightOffset:Double)
 		Self.m_dPeakPoint = peak

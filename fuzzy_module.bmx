@@ -1,6 +1,6 @@
 Rem
-	bbdoc:
-	about:
+	bbdoc: The hearth of our fuzzy system
+	about: Used to add FLV's, Fuzzify and DeFuzzify values
 End Rem
 Type TFuzzyModule
 	Rem
@@ -42,17 +42,7 @@ Type TFuzzyModule
 	End Method
 	
 	Rem
-		bbdoc: Destroy
-		about:
-	End Rem
-	Method Destroy()
-		Self.m_Variables.Clear()
-		Self.m_Rules.Clear()
-	End Method
-	
-	Rem
 		bbdoc: creates a new 'empty' fuzzy variable and returns a reference to it.
-		about:
 	End Rem
 	Method CreateFLV:TFuzzyVariable(varName:String)
 		Self.m_Variables.Insert(varName, New TFuzzyVariable)
@@ -61,7 +51,6 @@ Type TFuzzyModule
 	
 	Rem
 		bbdoc: adds a rule to the module
-		about:
 	End Rem
 	Method AddRule(antecedent:TFuzzyTerm, consequence:TFuzzyTerm)
 		Self.m_Rules.AddLast(New TFuzzyRule.Create(antecedent, consequence))
@@ -69,7 +58,6 @@ Type TFuzzyModule
 	
 	Rem
 		bbdoc: this method calls the Fuzzify method of the named FLV 
-		about:
 	End Rem
 	Method Fuzzify(nameOfFLV:String, val:Double)
 		Assert Self.m_Variables.ValueForKey(nameOfFLV), "TFuzzyModule.Fuzzify: key not found"
@@ -78,7 +66,6 @@ Type TFuzzyModule
 	
 	Rem
 		bbdoc: given a fuzzy variable and a deffuzification method this returns a crisp value
-		about:
 	End Rem
 	Method Defuzzify:Double(key:String, defuzzifyMethod:Int = TFuzzyModule.DefuzzifyMethod_MaxAv)
 		Assert Self.m_Variables.ValueForKey(key), "TFuzzyModule.Defuzzify: key not found"
@@ -102,7 +89,7 @@ Type TFuzzyModule
 	
 	Rem
 		bbdoc: writes the DOMs of all the variables in the module to an output stream
-		about:
+		about: Used for debugging
 	End Rem
 	Method WriteAllDOMs:String(stream:String Var)
 		stream:+"~n~n"

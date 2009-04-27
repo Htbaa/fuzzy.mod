@@ -1,6 +1,5 @@
 Rem
 	bbdoc: class to define an interface for a fuzzy set
-	about:
 End Rem
 Type TFuzzySet Abstract
 	Field m_dDOM:Double
@@ -59,21 +58,21 @@ Type TFuzzySet Abstract
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Resets DOM
 	End Rem
 	Method ClearDOM()
 		Self.m_dDOM = 0.0
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Returns DOM
 	End Rem
 	Method GetDOM:Double()
 		Return Self.m_dDOM
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Set DOM
 	End Rem
 	Method SetDOM(val:Double)
 		Assert (val <= 1 And val >= 0), "TFuzzySet.SetDOM: invalid value"

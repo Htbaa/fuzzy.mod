@@ -9,7 +9,7 @@ Type TFuzzyVariable
 	Field m_dMaxRange:Double
 	
 	Rem
-		bbdoc:
+		bbdoc: Initializes fuzzy variable
 	End Rem
 	Method New()
 		Self.m_dMinRange = 0.0
@@ -149,7 +149,7 @@ Type TFuzzyVariable
 	End Method
 	
 	Rem
-		bbdoc:
+		bbdoc: Used for debugging
 	End Rem
 	Method WriteDOMs:String(stream:String Var)
 		For Local key:String = EachIn Self.m_MemberSets.Keys()
