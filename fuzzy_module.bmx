@@ -104,7 +104,7 @@ Type TFuzzyModule
 		bbdoc: writes the DOMs of all the variables in the module to an output stream
 		about:
 	End Rem
-	Method WriteAllDOMs:String(stream:String)
+	Method WriteAllDOMs:String(stream:String Var)
 		stream:+"~n~n"
 		
 		For Local key:String = EachIn Self.m_Variables.Keys()

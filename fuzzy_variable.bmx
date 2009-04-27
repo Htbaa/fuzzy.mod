@@ -84,6 +84,7 @@ Type TFuzzyVariable
 	End Rem
 	Method Fuzzify(val:Double)
 		Assert (val >= Self.m_dMinRange And val <= Self.m_dMaxRange), "TFuzzyVariable.Fuzzify: value out of range"
+		'for each set in the flv calculate the DOM for the given value
 		For Local curSet:TFuzzySet = EachIn Self.m_MemberSets.Values()
 			curSet.SetDOM(curset.CalculateDOM(val))
 		Next
@@ -129,7 +130,7 @@ Type TFuzzyVariable
 		'in addition the moment of each slice is calculated and summed. Dividing
 		'the total area by the sum of the moments gives the centroid. (Just like
 		'calculating the center of mass of an object)
-		For Local samp:Int = 0 To numSamples
+		For Local samp:Int = 1 To numSamples
 		    'for each set get the contribution to the area. This is the lower of the 
 		    'value returned from CalculateDOM or the actual DOM of the fuzzified 
 		    'value itself
@@ -150,7 +151,7 @@ Type TFuzzyVariable
 	Rem
 		bbdoc:
 	End Rem
-	Method WriteDOMs:String(stream:String)
+	Method WriteDOMs:String(stream:String Var)
 		For Local key:String = EachIn Self.m_MemberSets.Keys()
 			stream:+"~n" + key + " is " + TFuzzySet(Self.m_MemberSets.ValueForKey(key)).GetDOM()
 		Next
