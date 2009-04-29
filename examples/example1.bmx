@@ -17,20 +17,20 @@ Local Undesirable:TFzSet = desirability.AddLeftShoulderSet("Undesirable", 0, 25,
 Local ammoStatus:TFuzzyVariable = fm.CreateFLV("AmmoStatus")
 Local AmmoLoads:TFzSet = ammoStatus.AddRightShoulderSet("AmmoLoads", 10, 30, 100)
 Local AmmoOkay:TFzSet = ammoStatus.AddTriangularSet("AmmoOkay", 0, 10, 30)
-Local AmmowLow:TFzSet = ammoStatus.AddTriangularSet("AmmoLow", 0, 0, 10)
+Local AmmoLow:TFzSet = ammoStatus.AddTriangularSet("AmmoLow", 0, 0, 10)
 
 
 fm.AddRule(FzAND([TargetClose, AmmoLoads]), Undesirable)
 fm.AddRule(FzAND([TargetClose, AmmoOkay]), Undesirable)
-fm.AddRule(FzAND([TargetClose, AmmowLow]), Undesirable)
+fm.AddRule(FzAND([TargetClose, AmmoLow]), Undesirable)
 
 fm.AddRule(FzAND([TargetMedium, AmmoLoads]), VeryDesirable)
 fm.AddRule(FzAND([TargetMedium, AmmoOkay]), VeryDesirable)
-fm.AddRule(FzAND([TargetMedium, AmmowLow]), Desirable)
+fm.AddRule(FzAND([TargetMedium, AmmoLow]), Desirable)
 
 fm.AddRule(FzAND([TargetFar, AmmoLoads]), Desirable)
 fm.AddRule(FzAND([TargetFar, AmmoOkay]), Undesirable)
-fm.AddRule(FzAND([TargetFar, AmmowLow]), Undesirable)
+fm.AddRule(FzAND([TargetFar, AmmoLow]), Undesirable)
 
 'fuzzify distance and amount of ammo
 fm.Fuzzify("DistToTarget", 200)
