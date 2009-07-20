@@ -11,7 +11,7 @@ Rem
 	Now imagine that all your weapons have a method called CalculateDesirability(). Each weapon will hold its
 	own fuzzy module to determine if it's wise to use the weapon in the current situation or not. The agent will
 	have a method called SelectWeapon() which executes the CalculateDesirability() method of each available weapon
-	and the weapon with the highest score will, most likely, be the best choice. More importantky, it would most
+	and the weapon with the highest score will, most likely, be the best choice. More importantly, it would most
 	likely be a decision a human would make as well. Of course, it all very much depends on how you've set your
 	FLV's, which in turn can also be tweaked to make agents that make smart or dumb decisions.
 End Rem
